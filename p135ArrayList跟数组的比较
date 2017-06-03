@@ -23,3 +23,6 @@ boolean isIn=myList.contains(b);                      boolean isIn=false;
                                                             break;
                                                           }
                                                         }
+
+在使用ArrayList时，只是在运用ArrayList类型的对象，因此就跟运用其他的对象一样，会使用“.”运算符来调用它的方法。
+使用数组时，会以特殊的数组语法来操作。这样的语法职能用在数组上。虽然说数组也是对象，但是它有自己的规则，无法调用它的方法，最多职能存取它的lenght实例变量。
