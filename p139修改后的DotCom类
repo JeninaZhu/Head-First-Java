@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+public class DotCom{
+  private ArrayList<String> locationCells;
+  //private int numOfHits;
+  //不需要上面这一行了！
+  
+  public void setLocationCells(ArrayList<String> loc){
+    locationCells=loc;
+  }                                             //将带有String的数组改成承载String的ArrayList
+  
+  public String checkYourself(String userInput){       //(String userInput)参数有了新名称
+    String result="miss";
+      int index=locationCells.indexOf(userInput);       //判别玩家猜测值是否有出现在ArrayList中，没有的话会返回-1
+      if(index>=0){                                     //如果索引值大于或等于0，命中！
+        locationCells.remove(index);                    //删除已经命中的格子
+        
+        if(locationCells.isEmpty()){                    //如果全部命中清空，那就表示击沉了！
+          result="kill";
+        }else {
+          result="hit";
+        }//close if
+      }//close outer if
+    return result;
+  }//close method
+}//close class
