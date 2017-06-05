@@ -1,0 +1,32 @@
+//伪码
+//声明变量
+DELCARE and instantiate(实例化) the GameHelper instance variable(实例变量).
+DELCARE and instantiate the ArratList to hold the list of DotComs(initially three) Call it dotComsList.
+DELCARE an int variable to hold the number of user guesses (so that we can give the user a score at the end of the game).
+        Name it numOfGuesses and set it to 0
+//声明方法
+DELCARE a setUpGame() method to create and initialize the DotCom objects with names and locations.
+        Display brief instructions to the user.
+DELCARE a startPlaying() method that asks the player for guesses and calls the checkUserGuess() method until all the 
+        DotCom objects are removed from play.
+DELCARE a checkUserGuess() method that loops through all remaining DotCom objects and calls each DotCom object's checkYourself() method.
+DELCARE a finishGame() method that prints a message about the user's performance,based on how many guesses it took to sink
+        all of the DotCom objects.
+//实现方法
+MOTHOD:void setUpGame()
+  //make three DotCom objects and name them
+  CREATE three DotCom objects.
+  SET a name for each DotCom.
+  ADD the DotComs to the dotComsList(the ArrayList).
+  REPEAT with each of the DotCom objects in the dotComsList array.
+    CALL the placeDotCom() method on the helper object,to get a randomly-selected location for 
+         this DotCom(three cells,vertically or horizongtally aligned,on a 7x7 grid).
+    SET the location for each DotCom based on the result of the placeDotCom() call.
+  END REPEAT
+END METHOD
+
+MOTHOD:void startPlaying()
+
+MOTHOD:void checkUserGuess()
+
+MOTHOD:void finishGame()
