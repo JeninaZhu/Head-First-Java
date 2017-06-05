@@ -27,6 +27,12 @@ END METHOD
 
 MOTHOD:void startPlaying()
 
+END METHOD
+
 MOTHOD:void checkUserGuess()
 
+END METHOD
+
 MOTHOD:void finishGame()
+
+END METHOD
