@@ -26,13 +26,28 @@ MOTHOD:void setUpGame()
 END METHOD
 
 MOTHOD:void startPlaying()
-
+  REPEAT while any DotComs exist
+      GET user input by calling the helper getUserInput() method
+      EVALUATE the user's guess by checkUserGuess() method
+  END REPEAT
 END METHOD
 
-MOTHOD:void checkUserGuess()
-
+MOTHOD:void checkUserGuess(String userGuess)
+  //find out if there's a hit (and kill) on any DotCom
+  INCREMENT the number of user guesses in the numOfGuesses variable
+  SET the local result variable(a String) to "miss",assuming that the user's guess will be a miss.
+  REPEAT with each of the DotObjects in the dotComsList array
+    EVALUATE the user's guess by calling the DotCom object's checkYourself() method
+    SET the result variable to "hit" or "kill" if appropriate
+    IF the result is "kill",REMOVE the DotCom from the dotComsList
+  END REPEAT
+  DISPLAY the result value to the user
 END METHOD
 
 MOTHOD:void finishGame()
-
+   DISPLAY a generic "ganme over" message,then:
+      IF number of user guesses is small,
+        DISPLAY a congratulations message
+      ELSE
+        DISPLAY an insulting one
 END METHOD
