@@ -1,72 +1,6 @@
 package DotComBust;
 import java.util.*;
 
-public class DotComBust { 						//声明初始化变量
-	private GameHelper helper = new GameHelper();
-	private ArrayList<DotCom> dotComsList = new ArrayList<DotCom>();
-	private int numOfGuesses=0;
-	
-	private void setUpGame(){
-		//first make some dot coms and give them locations
-		DotCom one=new DotCom();
-		one.setName("Pets.com");
-		DotCom two=new DotCom();
-		two.setName("eToys.com");
-		DotCom three=new DotCom();
-		three.setName("Go2.com");
-		dotComsList.add(one);
-		dotComsList.add(two);
-		dotComsList.add(three);
-		//创建三个Dotcom对象并指派名称并置入ArrayList
-		System.out.println("Your goal is to sink three dot coms.");
-		System.out.println("Peta.com,eToys.com,Go2.com");
-		System.out.println("Try to sink them all in the fewest number of guesses");
-		//列出简短的提示
-		for (DotCom dotComToSet:dotComsList){    //对list中所有的Dotcom重复
-			ArrayList<String> newLocation=helper.placeDotCom(3);//要求Dotcom的位置
-			dotComToSet.setLocationnCells(newLocation);//调用这个Dotcom的setter方法来指派刚取得的位置
-		}
-	}
-	private void startPlaying(){
-		while(!dotComsList.isEmpty()){ //判断Dotcom的list是否为空
-			String userGuess=helper.getUserInput("Enter a guess");//取得玩家输入
-			checkUserGuess(userGuess);//调用checkUserGuess方法
-		}
-		finishGame();//调用finishGame方法
-	}
-	private void checkUserGuess(String userGuess){
-		numOfGuesses++;//递增玩家猜测次数的计数
-		String result="miss";//先假设没有命中
-		for(DotCom dotComToTest:dotComsList){//对list中所有的Dotcom重复
-			result=dotComToTest.checkYourself(userGuess);//要求Dotcom检查是否命中或击沉
-			if(result.equals("kill")){
-				dotComsList.remove(dotComToTest);
-				break;
-			}
-		}
-		System.out.println(result);
-	}
-	private void finishGame()//列出玩家成绩
-		System.out.println("All Dot Coms are dead! Your stock is now worthless.");
-		if(numOfGuesses<=18){
-			System.out.println("It only took you"+numOfGuesses+"guesses.");
-			System.out.println("You got out before your options sank.");
-		} else {
-			System.out.println("Took you long enough."+numOfGuesses+"guesses.");
-			System.out.println("Fish are dancing with your options.");
-		}
-	}
-	
-	public static void main(String[] args) {
-		DotComBust ganme=new DotComBust();//创建游戏对象
-		game.setUpGame();//要求游戏对象启动
-		game.startPlaying();//要求游戏对象启动游戏的主要循环
-	}
-}
-
-package DotComBust;
-import java.util.*;
-
 public class DotCom {//Dotcom的实例变量
 	private ArrayList<String> locationCells;//保存位置的ArrayList
 	private String name;					//Dotcom的名称
@@ -95,10 +29,149 @@ public class DotCom {//Dotcom的实例变量
 }
 
 package DotComBust;
+import java.util.*;
+
+public class DotComBust { 						//声明初始化变量
+	private GameHelper helper = new GameHelper();
+	private ArrayList<DotCom> dotComsList = new ArrayList<DotCom>();
+	private int numOfGuesses=0;
+	
+	private void setUpGame(){
+		//first make some dot coms and give them locations
+		DotCom one=new DotCom();
+		one.setName("Pets.com");
+		DotCom two=new DotCom();
+		two.setName("eToys.com");
+		DotCom three=new DotCom();
+		three.setName("Go2.com");
+		dotComsList.add(one);
+		dotComsList.add(two);
+		dotComsList.add(three);
+		//创建三个Dotcom对象并指派名称并置入ArrayList
+		System.out.println("Your goal is to sink three dot coms.");
+		System.out.println("Peta.com,eToys.com,Go2.com");
+		System.out.println("Try to sink them all in the fewest number of guesses");
+		//列出简短的提示
+		for (DotCom dotComToSet:dotComsList){    //对list中所有的Dotcom重复
+			ArrayList<String> newLocation=helper.placeDotCom(3);//要求Dotcom的位置
+			dotComToSet.setLocationCells(newLocation);//调用这个Dotcom的setter方法来指派刚取得的位置
+		}
+	}
+	private void startPlaying(){
+		while(!dotComsList.isEmpty()){ //判断Dotcom的list是否为空
+			String userGuess=helper.getUserInput("Enter a guess");//取得玩家输入
+			checkUserGuess(userGuess);//调用checkUserGuess方法
+		}
+		finishGame();//调用finishGame方法
+	}
+	private void checkUserGuess(String userGuess){
+		numOfGuesses++;//递增玩家猜测次数的计数
+		String result="miss";//先假设没有命中
+		for(DotCom dotComToTest:dotComsList){//对list中所有的Dotcom重复
+			result=dotComToTest.checkYourself(userGuess);//要求Dotcom检查是否命中或击沉
+			if(result.equals("hit")){
+				break;
+			}
+			if(result.equals("kill")){
+				dotComsList.remove(dotComToTest);
+				break;
+			}
+		}
+		System.out.println(result);
+	}
+	private void finishGame(){//列出玩家成绩
+		System.out.println("All Dot Coms are dead! Your stock is now worthless.");
+		if(numOfGuesses<=18){
+			System.out.println("It only took you"+numOfGuesses+"guesses.");
+			System.out.println("You got out before your options sank.");
+		} else {
+			System.out.println("Took you long enough."+numOfGuesses+"guesses.");
+			System.out.println("Fish are dancing with your options.");
+		}
+	}
+	
+	public static void main(String[] args) {
+		DotComBust game=new DotComBust();//创建游戏对象
+		game.setUpGame();//要求游戏对象启动
+		game.startPlaying();//要求游戏对象启动游戏的主要循环
+	}
+}
+
+package DotComBust;
 import java.io.*;
 import java.util.*;
 
 public class GameHelper {
+	private static final String alphabet="abcdegf";
+	private int gridLength=7;
+	private int gridSize=49;
+	private int [] grid=new int[gridSize];
+	private int comCount=0;
 	
+	public String getUserInput(String prompt){
+		String inputLine=null;
+		System.out.print(prompt + " ");
+		try{
+			BufferedReader is =new BufferedReader(new InputStreamReader(System.in));
+			inputLine=is.readLine();
+			if(inputLine.length()==0)return null;
+		}catch(IOException e){
+			System.out.println("IOException: "+ e);
+		}
+		return inputLine.toLowerCase();
+	}
+	public ArrayList<String> placeDotCom(int comSize){
+		ArrayList<String> alphaCells=new ArrayList<String>();
+		String [] alphacoords=new String [comSize];//保存字符串
+		String temp=null;//临时字符串
+		int [] coords=new int[comSize];//现有字符串
+		int attempts=0;//目前测试的字符串
+		boolean success=false;//找到适合位置吗？
+		int location=0;//目前起点
+		
+		comCount++;//现在处理到第n个
+		int incr=1;//水平增量
+		if((comCount % 2)==1){//如果是单数号的
+			incr=gridLength;//垂直增量
+		}
+		
+		while(!success & attempts++<200){//主要搜索循环
+			location=(int)(Math.random()*gridSize);//随机起点
+			//System.out.print("try"+location);
+			int x=0;//第n个位置
+			success=true;//假定成功
+			while(success&&x<comSize){//查找未使用的点
+				if(grid[location]==0){//如果没有使用
+					coords[x++]=location;//储存位置
+					location+=incr;//尝试下一个点
+					if(location>=gridSize){//超出下边缘
+						success=false;//失败
+					}
+					if(x>0 &&(location%gridLength==0)){//超出右边缘
+						success=false;//失败
+					}
+				}else{//找到已经使用的位置
+					//system.out.print("used"+location;
+					success=false;//失败
+				}
+			}
+		}//while结束
+		int x=0;//将位置转换成字符串形式
+		int row=0;
+		int column=0;
+		//system.out.println("\n");
+		while(x<comSize){
+			grid[coords[x]]=1;//标识格子已用
+			row=(int)(coords[x]/gridLength);//得到行的值
+			column=coords[x]%gridLength;//得到列的值
+			temp=String.valueOf(alphabet.charAt(column));//转换成字符串
+			alphaCells.add(temp.concat(Integer.toString(row)));
+			x++;
+			//system.out.print("coord"+x+"="+alphaCells.get(x-1));这一行会告诉Dotcom的确实位置
+		}
+		//System.out.println("\n");
+		return alphaCells;
+	}
 
 }
+
