@@ -1,0 +1,20 @@
+public class Doctor{
+  boolean worksAtHospital;
+  void treatPatient(){
+    //执行检查
+  }
+}
+public class FamilyDoctor extends Doctor{
+  boolean makesHouseCells;
+  void giveAdvice(){
+    //提出诊断
+  }
+}
+public class Surgen extends Doctor{
+  void treatPatient(){
+    //进行手术
+  }
+  void makeIncision(){
+    //截肢
+  }
+}
