@@ -1,0 +1,24 @@
+1.euqals(Object o)
+Dog a = new Dog();
+Cat c = new Cat();
+if(a.equals(c)){
+  System.out.println("true");
+}else{
+  System.out.println("false");
+}
+//这会让我们知道是否两个对象可以是“相等”的
+
+2.getClass()
+Cat c = new Cat();
+System.out.println(c.getClass());
+//告诉我们此对象是从哪里被初始化
+
+3.hashCode()
+Cat c = new Cat();
+System.out.println(c.hashCode());
+//列出此对象的哈希代码
+
+4.toString()
+Cat c = new Cat();
+System.out.println(c.toString());
+//列出类的名称和一个数字
