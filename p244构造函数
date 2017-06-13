@@ -16,4 +16,9 @@ public class UseADuck{
 下面列出的构造函数都是合法的，因为参数都不相同。假设有两个构造函数的参数都是只有一个int，则肯定无法通过编译程序。
 编译器看的是参数的类型和顺序而不是参数的名字。
 
-public
+public class Mushroom{
+  public Mushroom(int size){}
+  public Mushroom(){}
+  public Mushroom(boolean isMagic){}
+  public Mushroom(boolean isMagic,int size){}
+  public Mushroom(int size,boolean isMagic){}
