@@ -1,0 +1,13 @@
+public class Duck{
+  int size;
+  public Duck(int duckSize){    //int ducksize给构造函数加上参数
+    system.out.println("Quack");
+    size=duckSize;        //使用参数的值来设定size这个实例变量
+    system.out.println(“size is”+size）；
+  }
+}
+public class UseADuck{
+  public static void main(String[] args){
+    Duck d= new Duck(42);   //传值给构造函数，只用一行就可以创建出新的Duck并且设定好大小  
+  }
+}
