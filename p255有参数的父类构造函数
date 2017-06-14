@@ -1,0 +1,24 @@
+public abstract class Animal{
+  private String name;//每个animal都会有名字
+  
+  public String getName(){//hippo会继承这个getter
+    return name;
+  }
+  
+  public Animal(String theName){
+    name=theName;       //  有参数的构造函数，用来设定name
+  }
+}
+
+public class Hippo extends Animal{
+  public Hippo(String name){
+    super(name);
+  }
+}
+
+public class MakeHippo{
+  public static void main(String[] args){
+    Hippo h=new Hippo("Buffy");
+    System.out.println(h.getName());
+  }
+}
