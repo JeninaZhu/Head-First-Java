@@ -1,0 +1,16 @@
+非静态：
+public class Song{
+  String title;//实例变量的值会影响到play（）方法的行为
+  public Song(String t){
+    title=t;
+  }
+  public void play(){
+    SoundPlayer player=new SoundPlayer();
+    Player.playSound(title);//title的值会决定play（）方法所播放的内容
+  }
+  
+  静态方法：
+  public static int min(int a,int b){
+    //返回a与b中较小的值
+  }
+  
