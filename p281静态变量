@@ -1,0 +1,21 @@
+静态变量会在该类的任何对象创建之前就完成初始化
+静态变量会在该类的任何静态方法执行之前就初始化
+
+class Player{
+  static int playerCount=0;     //playerCount会在载入类的时候就初始化为0.
+  private String name;
+  public Player(String n){
+    name=n;
+    playerCount++;
+  }
+}
+
+public class PlayerTestDrive{
+  public static void main (String[] args){
+    System.out.println(Player.playerCount);
+    Player one=new Player("Tiger Woods");
+    System.out.println(Player.playerCount);   //静态变量也是通过类的名称来存取
+  }
+}
+如果没有给静态变量赋值，它就会被设定默认值。int会被设定为0。
+静态变量的默认值会是该变量类型的默认值，就像实例变量所被赋予的默认值一样。
