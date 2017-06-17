@@ -1,0 +1,17 @@
+Calendar c=Calendar.getInstance();
+c.set(2004,1,7,15,40);//将时间设定为2004年1🈷️7日15:40，注意月份是零基的
+long day1=c.getTimeInMillis();// 将目标时间转换为以millisecond表示
+day1 +=1000*60*60;
+c.setTimeINMillis(day1);//将c的时间加上一小时
+System.out.println("new hour"+c.(HOUR_OF_DAY));
+c.add(c.DATE,35);//加上35天，所以c已经到了2月
+System.out.println("add 35 days"+c.getTime());
+c.roll(c.DATE,35);//滚动35天，注意，只有日期字段会懂，月份不会动
+System.out.println("roll 35 days"+c.getTime());
+c.set(c.DATE,1);//直接设定DATE的值
+System.out.println("set to 1"+c.c.getTime());
+
+结果是
+add 35 days Web Feb 11 16:40:41 MST 2004
+roll 35 days Tue Feb 17 16:40:41 MST 2004
+set to 1 Feb 01 16:40:41 MST 2004 
