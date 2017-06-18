@@ -1,0 +1,17 @@
+重要的方法
+add(int field,int amount) //加减时间值
+get(int field) //取出指定字段的值
+getInstance() //返回Calendar，可指定地区
+getTimeInMillis() //以毫秒返回时间
+set(int field,int value) //设定指定字段的值
+set(year,month,day,hour,minute)//设定完整的时间
+。。。
+关键字段
+DATE/DAY_OF_MONTH //每月的几号
+HOUR/HOUR_OF_DAY//小时
+MILLISECOND//毫秒
+MINUTE
+MONTH
+YEAR
+ZONE_OFFSET//时区位移
+。。。
