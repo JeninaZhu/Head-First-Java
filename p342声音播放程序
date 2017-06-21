@@ -1,0 +1,38 @@
+运行后听到单一钢琴音。
+package playSound;
+import javax.sound.midi.*;//引进importmidi包
+
+public class MiniMiniMusicApp {
+
+	public static void main(String[] args) {
+		MiniMiniMusicApp mini=new MiniMiniMusicApp();
+		mini.play();
+	}
+	public void play(){
+		try{
+			Sequencer player=MidiSystem.getSequencer();//1.取得sequencer
+			player.open();//1.并将其打开
+			
+			Sequence seq=new Sequence(Sequence.PPQ,4);
+			
+			Track track=seq.createTrack();//3.要求取得track
+			
+			ShortMessage a=new ShortMessage();//4.对track加入几个midievwnt，
+			a.setMessage(144,1,44,100);//4.要注意的是setmessage（）的参数以及midievent的construction
+			MidiEvent noteOn=new MidiEvent(a,1);//4.
+			track.add(noteOn);//4.
+			
+			ShortMessage b=new ShortMessage();//4.
+			b.setMessage(128,1,44,100);//4.
+			MidiEvent noteOff=new MidiEvent(b,16);//4.
+			track.add(noteOff);//4.
+			
+			player.setSequence(seq);//
+			player.start();//
+			
+		}catch(Exception ex){
+			ex.printStackTrace();
+			
+		}
+	}
+}
