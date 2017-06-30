@@ -1,0 +1,67 @@
+
+import java.io.*;
+
+public class GameSaverTest {
+
+	public static void main(String[] args) {
+		GameCharacter one=new GameCharacter(50,"Elf",new String[] {"bow","sword","dust"});
+		GameCharacter two=new GameCharacter(200,"Troll",new String[] {"bare hands","big ax"});
+		GameCharacter three=new GameCharacter(120,"Magican",new String[] {"spells","invisibility"});
+		//假设此处有改变人物状态值的程序代码
+		try{
+			ObjectOutputStream os=new ObjectOutputStream(new FileOutputStream("Game.ser"));
+			os.writeObejct(one);
+			os.writeObject(two);
+			os.writeObject(three);
+			os.close();
+		}catch(IOException ex){
+			ex.printStackTrace();
+		}
+		one=null;
+		two=null;
+		three=null;
+		//设定成null，因此无法存取堆上的这些对象
+		try{
+			ObjectInputStream is=new ObjectInputStream(new FileInputStream("Game.ser"));
+			GameCharacter OneRestore=(GameCharacter)is.readObject();
+			GameCharacter TwoRestore=(GameCharacter)is.readObject();
+			GameCharacter ThreeRestore=(GameCharacter)is.readObject();
+			
+			System.out.println("one's type:"+oneRestore.getType());
+			System.out.println("two's type:"+twoRestore.getType());
+			System.out.println("three's type:"+threeRestore.getType());	
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+}
+
+
+
+package gamesave;
+import java.io.*;
+
+public class GameCharacter implements Serializable{
+	int power;
+	String type;
+	String[] weapons;
+	
+	public GameCharacter(int p,String t,String[] w){
+		power=p;
+		type=t;
+		weapons=w;
+	}
+	public int getPower(){
+		return power;
+	}
+	public String getType(){
+		return type;
+	}
+	public String getWeapons(){
+		String weaponList="";
+		for(int i=0;i<weapons.length;i++){
+			weaponList+=weapons[i]+" ";
+		}
+		return weaponList;
+	}
+}
